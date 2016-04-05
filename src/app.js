@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import Header from './components/common/header';
 
 import Footer from './components/common/footer';
 
-class App extends React.Component {
+class App extends Component {
   constructor() {
     super();
     this.state = {};
   }
 
-  componentDidMount() {
-    console.log('running app');
+  getChildContext() {
+    return {
+      test: 'test'
+    };
   }
 
   renderChildren() {
@@ -22,15 +24,17 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="row">
-        <div className="col-md-12">
-          <Header />
-          { this.renderChildren() }
-          <Footer />
-        </div>
+      <div className="container">
+        <Header />
+        { this.renderChildren() }
+        <Footer />
       </div>
     );
   }
 }
+
+App.childContextTypes = {
+  test: React.PropTypes.string.isRequired
+};
 
 export default App;

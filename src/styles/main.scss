@@ -2,3 +2,7 @@ body {
   background-color: #F8F9F9;
   padding-top: 70px;
 }
+
+img[src$=".svg"] {
+  width: 100% \9;
+}

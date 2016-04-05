@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-class Footer extends React.Component {
+class Footer extends Component {
   render() {
     return (
-      <footer>
+      <footer className="row">
         <p>Jay Davis &copy; 2015</p>
       </footer>
     );

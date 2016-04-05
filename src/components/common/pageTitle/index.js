@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-class PageTitle extends React.Component {
+class PageTitle extends Component {
   render() {
     return (
       <div className="page-header">
@@ -10,6 +10,6 @@ class PageTitle extends React.Component {
   }
 }
 
-PageTitle.propTypes = { title: React.PropTypes.string };
+PageTitle.propTypes = { title: React.PropTypes.string.isRequired };
 
 export default PageTitle;
