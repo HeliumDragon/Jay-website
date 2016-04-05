@@ -4,10 +4,17 @@ import Header from './components/common/header';
 
 import Footer from './components/common/footer';
 
+import AppActions from './action/app-actions';
+import AppStore from './stores/app-store';
+
+function getProjects() {
+  return { projects: AppStore.getProjects() };
+}
+
 class App extends Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = getProjects();
   }
 
   getChildContext() {
@@ -18,7 +25,7 @@ class App extends Component {
 
   renderChildren() {
     return React.Children.map(this.props.children, child => {
-      return React.cloneElement(child, {});
+      return React.cloneElement(child, this.state);
     });
   }
 
