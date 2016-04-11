@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 import Image from '../image';
 
@@ -12,7 +12,7 @@ class Thumb extends Component {
           <div className="caption">
             <h3>{ this.props.thumb.title }</h3>
 
-            <p>{ this.props.thumb.description } {this.context.test}</p>
+            <p>{ this.props.thumb.description }</p>
 
             <p>
               <a href={ this.props.thumb.url }
@@ -29,11 +29,7 @@ class Thumb extends Component {
 }
 
 Thumb.propTypes = {
-  thumb: React.PropTypes.object.isRequired,
-};
-
-Thumb.contextTypes = {
-  test: React.PropTypes.string.isRequired
+  thumb: PropTypes.object.isRequired,
 };
 
 export default Thumb;

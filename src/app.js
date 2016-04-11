@@ -1,10 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Children, PropTypes } from 'react';
 
 import Header from './components/common/header';
-
 import Footer from './components/common/footer';
 
-import AppActions from './action/app-actions';
 import AppStore from './stores/app-store';
 
 function getProjects() {
@@ -19,13 +17,13 @@ class App extends Component {
 
   getChildContext() {
     return {
-      test: 'test'
+      projectList: this.state
     };
   }
 
   renderChildren() {
-    return React.Children.map(this.props.children, child => {
-      return React.cloneElement(child, this.state);
+    return Children.map(this.props.children, child => {
+      return React.cloneElement(child);
     });
   }
 
@@ -41,7 +39,7 @@ class App extends Component {
 }
 
 App.childContextTypes = {
-  test: React.PropTypes.string.isRequired
+  projectList: PropTypes.object.isRequired
 };
 
 export default App;
