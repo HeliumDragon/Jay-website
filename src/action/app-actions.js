@@ -12,5 +12,11 @@ export default {
     dispatch({
       actionType: AppConstants.REMOVE_PROJECT, project
     });
+  },
+
+  orderProject(project) {
+    dispatch({
+      actionType: AppConstants.ORDER_PROJECT, project
+    });
   }
 };

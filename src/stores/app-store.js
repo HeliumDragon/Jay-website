@@ -16,6 +16,14 @@ for (var i = 0; i < 9; i++) {
   });
 }
 
+_projects.push({
+  id: 14,
+  title: 'React',
+  description: 'lorem ipsum '+i,
+  url: '#',
+  img_src: 'http://placehold.it/350x150'
+});
+
 const _removeProject = project => {
   _projects.splice(_projects.findIndex(i => i === project), 1);
 };
@@ -32,6 +40,22 @@ const _addProject = project => {
   }
 
   _projects.push(project);
+};
+
+const _orderProject = projectList => {
+  console.log(projectList);
+
+  projectList.forEach(project => {
+    console.log(project);
+    let index = _projects.indexOf(project)
+      , reposition = _projects.splice(index, 1);
+
+    reposition.map(project => {
+      _projects.unshift(project);
+    });
+
+    console.log(_projects);
+  });
 };
 
 const AppStore = Object.assign(EventEmitter.prototype, {
@@ -59,6 +83,8 @@ const AppStore = Object.assign(EventEmitter.prototype, {
       case AppConstants.REMOVE_PROJECT:
         _removeProject(action.item);
         break;
+      case AppConstants.ORDER_PROJECT:
+        _orderProject(action.project);
     }
 
     AppStore.emitChange()

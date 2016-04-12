@@ -3,8 +3,6 @@ import React, { Component, PropTypes } from 'react';
 import Thumb from '../../../components/common/thumbnail';
 import ProjectManager from './projectManager';
 
-import AppActions from '../../../action/app-actions';
-
 class Projects extends Component {
   constructor() {
     super();
@@ -23,7 +21,7 @@ class Projects extends Component {
 
     return (
       <section>
-        <ProjectManager />
+        <ProjectManager projects={ items } />
 
         { this.renderItems(items) }
       </section>

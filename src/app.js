@@ -12,13 +12,29 @@ function getProjects() {
 class App extends Component {
   constructor() {
     super();
-    this.state = getProjects();
+    this.state = {
+      projectList: getProjects()
+    }
   }
 
   getChildContext() {
     return {
-      projectList: this.state
+      projectList: this.state.projectList
     };
+  }
+
+  componentWillMount() {
+    AppStore.addChangeListener(this.handleState.bind(this));
+  }
+
+  componentWillUnmount() {
+    AppStore.removeChangeListener(this.handleState);
+  }
+
+  handleState() {
+    this.setState({
+      projectList: getProjects()
+    });
   }
 
   renderChildren() {

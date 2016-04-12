@@ -6,8 +6,6 @@ import Projects from '../projects';
 
 class Home extends Component {
   render() {
-    let items = this.context.projects;
-
     return (
       <div className="row">
         <div className="col-md-12">
@@ -19,9 +17,5 @@ class Home extends Component {
     );
   }
 }
-
-Home.propTypes = {
-  projects: PropTypes.array
-};
 
 export default Home;
