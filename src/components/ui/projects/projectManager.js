@@ -8,19 +8,16 @@ class ProjectManager extends Component {
     super();
   }
 
-  handleSearch(event) {
+  handleChange(e) {
     let input = this.searchInput.value
       , projects = this.props.projects
-      , key = event.keyCode
       , search;
-
-    if (key === 13) {
-      event.preventDefault();
-    }
 
     search = this.filterProjects(projects, input);
 
     AppActions.orderProject(search);
+
+    e.preventDefault();
   }
 
   filterProjects(projects, input) {
@@ -42,7 +39,8 @@ class ProjectManager extends Component {
 
   render() {
     return (
-      <form className="form-horizontal">
+      <form className="form-horizontal"
+            onSubmit={ this.handleChange.bind(this) }>
         <div className="form-group">
           <label htmlFor="search"
                  className="col-sm-2 control-label">
@@ -55,7 +53,7 @@ class ProjectManager extends Component {
                    id="search"
                    ref={ ref => this.searchInput = ref }
                    placeholder="eg: React"
-                   onKeyUp={ this.handleSearch.bind(this) }
+                   onChange={ this.handleChange.bind(this) }
                    />
           </div>
         </div>

@@ -43,18 +43,13 @@ const _addProject = project => {
 };
 
 const _orderProject = projectList => {
-  console.log(projectList);
-
   projectList.forEach(project => {
-    console.log(project);
     let index = _projects.indexOf(project)
       , reposition = _projects.splice(index, 1);
 
     reposition.map(project => {
       _projects.unshift(project);
     });
-
-    console.log(_projects);
   });
 };
 
