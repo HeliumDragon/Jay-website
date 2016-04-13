@@ -11,7 +11,7 @@ for (var i = 0; i < 9; i++) {
     id: i,
     title: 'Project'+i,
     description: 'lorem ipsum '+i,
-    url: '#',
+    url: 'project/',
     img_src: 'http://placehold.it/350x150'
   });
 }
@@ -20,7 +20,7 @@ _projects.push({
   id: 14,
   title: 'React',
   description: 'lorem ipsum '+i,
-  url: '#',
+  url: 'project/',
   img_src: 'http://placehold.it/350x150'
 });
 
@@ -43,6 +43,8 @@ const _addProject = project => {
 };
 
 const _orderProject = projectList => {
+  if (!projectList) return;
+
   projectList.forEach(project => {
     let index = _projects.indexOf(project)
       , reposition = _projects.splice(index, 1);

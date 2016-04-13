@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router';
 
 import Image from '../image';
 
@@ -15,11 +16,9 @@ class Thumb extends Component {
             <p>{ this.props.thumb.description }</p>
 
             <p>
-              <a href={ this.props.thumb.url }
-                 className="btn btn-primary"
-                 role="button">
-                Button
-              </a>
+              <Link to={ this.props.thumb.url + this.props.thumb.id }
+                    className="btn btn-primary"
+                    role="button">Button</Link>
             </p>
           </div>
         </div>

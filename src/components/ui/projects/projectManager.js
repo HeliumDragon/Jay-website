@@ -13,11 +13,15 @@ class ProjectManager extends Component {
       , projects = this.props.projects
       , search;
 
+    if (!input) {
+      e.preventDefault();
+
+      return;
+    };
+
     search = this.filterProjects(projects, input);
 
     AppActions.orderProject(search);
-
-    e.preventDefault();
   }
 
   filterProjects(projects, input) {
@@ -42,15 +46,15 @@ class ProjectManager extends Component {
       <form className="form-horizontal"
             onSubmit={ this.handleChange.bind(this) }>
         <div className="form-group">
-          <label htmlFor="search"
+          <label htmlFor="find"
                  className="col-sm-2 control-label">
-            Search
+            Find
           </label>
 
           <div className="col-sm-8">
             <input type="text"
                    className="form-control"
-                   id="search"
+                   id="find"
                    ref={ ref => this.searchInput = ref }
                    placeholder="eg: React"
                    onChange={ this.handleChange.bind(this) }
